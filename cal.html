@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculator</title>
+    <style>
+        button{
+            width: 100%;
+            height: 100%;
+            border: 3px solid rgb(13, 141, 239);
+            border-radius: 5%;
+        }
+       .container{
+        margin: 100px 0px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 400px;
+       }
+       table{
+        width: 32%;
+        height: 100%;
+        border: 5px solid rgb(187, 7, 236);
+       }
+       td{
+        width: 100px;
+        height: 50px;
+       }
+       #b{
+        width: 100%;
+       }
+       
+       body{
+        background-color: black;
+       }
+       .button{
+        font-family: cursive;
+        font-size: 34px;
+        font-weight: bold;
+        color: rgb(219, 16, 107);
+        background-color: rgb(233, 233, 0);
+        cursor: pointer;
+       }
+       #result{
+        font-family: cursive;
+        font-size: 40px;
+        font-weight: bold;
+        color: rgb(41, 21, 192);
+        background-color: rgb(255, 136, 0);
+        padding-left: 10px;
+        height: 90%;
+        width: 96%;
+        border:2px solid blueviolet;
+        border-radius: 3%;
+       }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <table>
+            <tr>
+                <td colspan="3"><input type="text" class="a" id="result"></td>
+                <td><button class="button" id="b"> C </button></td>
+            </tr>
+            <tr>
+                <td><button class="button">1</button></td>
+                <td><button class="button">2</button></td>
+                <td><button class="button">3</button></td>
+                <td><button class="button" id="b">/</button></td>
+            </tr>
+            <tr>
+                <td><button class="button">4</button></td>
+                <td><button class="button">5</button></td>
+                <td><button class="button">6</button></td>
+                <td><button class="button" id="b">-</button></td>
+            </tr>
+            <tr>
+                <td><button class="button">7</button></td>
+                <td><button class="button">8</button></td>
+                <td><button class="button">9</button></td>
+                <td><button class="button" id="b">+</button></td>
+            </tr>
+            <tr>
+                <td><button class="button">.</button></td>
+                <td><button class="button">0</button></td>
+                <td><button class="button">=</button></td>
+                <td><button class="button" id="b">*</button></td>
+            </tr>
+        </table>
+    </div>
+    <script>
+        let string="";
+        let buttons=document.querySelectorAll('.button');
+        let x=document.querySelector('.a');
+        Array.from(buttons).forEach(function(e){
+           e.addEventListener('click',function(p){
+            if(p.target.innerHTML=='='){
+                string=eval(string);
+                x.value=string
+            }
+            else if(p.target.innerHTML==' C '){
+                string="";
+                x.value=string;
+            }
+            else{
+            string+=p.target.innerHTML;
+            x.value=string;
+            }
+           })
+        })
+    </script>
+</body>
+</html>
